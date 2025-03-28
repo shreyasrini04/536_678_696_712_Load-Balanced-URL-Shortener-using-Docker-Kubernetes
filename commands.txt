@@ -1,0 +1,13 @@
+Commands  after cloning 
+1.pip install -r requirements.txt
+2.pip freeze(check if flask is installed)
+3.Run the app.py(python3 app.py) and check if application is running.
+
+
+Command to build Docker 
+
+1. sudo systemctl start docker 
+2. sudo systemctl status docker- make sure docker is running 
+3. docker-compose up --build(inside the directory)  
+4.docker-compose up(command to run after building) 
+
