@@ -11,3 +11,18 @@ Command to build Docker
 3. docker-compose up --build(inside the directory)  
 4.docker-compose up(command to run after building) 
 
+
+
+Command for minikube 
+1.minikube start 
+2.kubectl apply -f k8s/redis-deployment.yaml
+kubectl apply -f k8s/redis-service.yaml
+kubectl apply -f k8s/url-shortener-deployment.yaml
+kubectl apply -f k8s/url-shortener-service.yaml
+
+3.kubectl get pods
+4.kubectl get services(3 and 4 both commands to test if pods are running correctly)
+5.minikube service url-shortener-service --url(copy the url giving and open on browser, it will open application)
+
+6.kubectl create configmap url-shortener-config --from-literal=REDIS_HOST=redis-service
+
