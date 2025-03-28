@@ -39,7 +39,7 @@ def home():
             short_code = generate_short_code()
 
         redis_client.set(short_code, long_url)
-        short_url = f"http://127.0.0.1:5000/{short_code}"
+        short_url =f"{request.host_url}{short_code}"
 
     return render_template("index.html", short_url=short_url)
 
@@ -48,9 +48,9 @@ def redirect_to_long(short_code):
     long_url = redis_client.get(short_code)
 
     if not long_url:
-        return render_template("index.html", error="Short URL not found.")
+        return render_template("index.html", error="Short URL not found."),404
 
-    return redirect(long_url)
+    return redirect(long_url,code=302)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
