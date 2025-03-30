@@ -25,4 +25,10 @@ spec:
               key: REDIS_HOST
         - name: REDIS_PORT
           value: "6379"
-
+        resources:
+          requests:
+            cpu: "100m"    # Requesting minimum CPU
+            memory: "128Mi"
+          limits:
+            cpu: "500m"    # Maximum CPU usage
+            memory: "256Mi"
