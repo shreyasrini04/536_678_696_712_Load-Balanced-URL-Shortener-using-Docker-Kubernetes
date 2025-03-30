@@ -26,3 +26,28 @@ kubectl apply -f k8s/url-shortener-service.yaml
 
 6.kubectl create configmap url-shortener-config --from-literal=REDIS_HOST=redis-service
 
+Week 3
+Task 1
+1. kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+2. minikube addons enable metrics-server
+3. kubectl patch deployment metrics-server -n kube-system --type='json' -p='[{"op": "add", "path": "/spec/template/spec/containers/0/args/-", "value": "--kubelet-insecure-tls"}]'
+4. kubectl rollout restart deployment metrics-server -n kube-system
+5. kubectl get apiservices | grep metrics #Has to be True 
+6. kubectl apply -f k8s/url-shortener-deployment.yaml
+7. kubectl apply -f k8s/hpa.yaml
+8. kubectl get hpa -w
+
+New terminal
+1. kubectl get svc url-shortener service
+2. minikube service url-shortener-service --url
+3. kubectl logs -f deployment/url-shortener
+(Open the link)
+
+New terminal
+1. kubectl get pods --watch
+
+New terminal
+1. sudo apt install apache2-utils -y
+2. ab -n 1000 -c 10 http://192.168.49.2:31212/shorten-url
+(1000 - no.of requests, 10- concurrent change it according to VM capacity)
+3. kubectl get hpa (check cpu usage)
