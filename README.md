@@ -34,16 +34,18 @@ git clone https://github.com/shreyasrini04/536_678_696_712_Load-Balanced-URL-Sho
 cd 536_678_696_712_Load-Balanced-URL-Shortener-using-Docker-Kubernetes
 ```
 
-### Step 2: Build Docker Images
+### Step 2: Build Docker Images and pip installations 
 ```bash
-docker build -t url-shortener-backend ./backend
-docker build -t url-shortener-frontend ./frontend
+pip install -r requirements.txt
+docker-compose up
 ```
 
 ### Step 3: Deploy with Kubernetes
 ```bash
-kubectl apply -f k8s/deployment.yaml
-kubectl apply -f k8s/service.yaml
+kubectl apply -f k8s/redis-deployment.yaml
+kubectl apply -f k8s/redis-service.yaml
+kubectl apply -f k8s/url-shortener-deployment.yaml
+kubectl apply -f k8s/url-shortener-service.yaml
 ```
 
 ---
