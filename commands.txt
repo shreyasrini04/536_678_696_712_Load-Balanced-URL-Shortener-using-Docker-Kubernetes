@@ -38,7 +38,7 @@ Task 1
 8. kubectl get hpa -w
 
 New terminal
-1. kubectl get svc url-shortener service
+1. kubectl get svc url-shortener-service
 2. minikube service url-shortener-service --url
 3. kubectl logs -f deployment/url-shortener
 (Open the link)
